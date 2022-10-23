@@ -3,50 +3,59 @@
     <div class="container">
       <h1>Customer Form</h1>
       <hr>
-      <div class="row">
-        <div class="col-12 col-md-4 col-lg-3">
+      <form [formGroup]="customerForm">
+        <div class="row">
+          <div class="col-12 col-md-4 col-lg-3">
 
             <mat-form-field class="full-width"
                             appearance="outline">
               <mat-label>Customer Id</mat-label>
               <input type="text" matInput
+                     formControlName="id"
                      placeholder="Ex. C-001">
             </mat-form-field>
 
+          </div>
+          <div class="col-12 col-md-4 col-lg-3">
+            <mat-form-field class="full-width"
+                            appearance="outline">
+              <mat-label>Customer Name</mat-label>
+              <input type="text" matInput
+                     formControlName="name"
+                     placeholder="Ex. Kamal">
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-md-4 col-lg-3">
+            <mat-form-field class="full-width"
+                            appearance="outline">
+              <mat-label>Address</mat-label>
+              <input type="text" matInput
+                     formControlName="address"
+                     placeholder="Ex. Colombo">
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-md-4 col-lg-3">
+            <mat-form-field class="full-width"
+                            appearance="outline">
+              <mat-label>Salary</mat-label>
+              <input type="number" matInput
+                     formControlName="salary"
+                     placeholder="Ex. 25000">
+            </mat-form-field>
+          </div>
+          <div class="col-12">
+            <p style="text-align: right">
+              <button
+                mat-raised-button
+                color="primary"
+                (click)="saveCustomer()"
+              >Save Customer
+              </button>
+            </p>
+          </div>
         </div>
-        <div class="col-12 col-md-4 col-lg-3">
-          <mat-form-field class="full-width"
-                          appearance="outline">
-            <mat-label>Customer Name</mat-label>
-            <input type="text" matInput
-                   placeholder="Ex. Kamal">
-          </mat-form-field>
-        </div>
-        <div class="col-12 col-md-4 col-lg-3">
-          <mat-form-field class="full-width"
-                          appearance="outline">
-            <mat-label>Address</mat-label>
-            <input type="text" matInput
-                   placeholder="Ex. Colombo">
-          </mat-form-field>
-        </div>
-        <div class="col-12 col-md-4 col-lg-3">
-          <mat-form-field class="full-width"
-                          appearance="outline">
-            <mat-label>Salary</mat-label>
-            <input type="number" matInput
-                   placeholder="Ex. 25000">
-          </mat-form-field>
-        </div>
-        <div class="col-12">
-          <p style="text-align: right">
-            <button
-              mat-raised-button
-              color="primary"
-            >Save Customer</button>
-          </p>
-        </div>
-      </div>
+      </form>
+      <hr>
     </div>
 
 
