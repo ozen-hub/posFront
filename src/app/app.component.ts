@@ -21,8 +21,17 @@ export class AppComponent {
         Validators.maxLength(45), Validators.minLength(5)]),
     salary: new FormControl(null, Validators.required)
   });
-
+  customerList:CustomerDto[]=[];
   constructor(private customerService: CustomerService) {
+    this.loadCustomers();
+  }
+
+  private loadCustomers() {
+    this.customerService.loadAll().subscribe(response=>{
+      if (response.code===200){
+        this.customerList=response.data.list;
+      }
+    })
   }
 
   saveCustomer(){
