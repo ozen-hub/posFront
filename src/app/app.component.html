@@ -81,7 +81,7 @@
         <td>{{tempData.address}}</td>
         <td>{{tempData.salary}}</td>
         <td>
-          <button class="btn btn-danger btn sm">Delete</button>
+          <button class="btn btn-danger btn sm" (click)="deleteCustomer(tempData.id)">Delete</button>
         </td>
       </tr>
       </tbody>

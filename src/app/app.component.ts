@@ -53,7 +53,21 @@ export class AppComponent {
   }
   viewAlert(type:string,message:string){
     if (type==='success'){
-      this.toastr.success(message);
+      this.toastr.success(message,'Success!',{
+        timeOut:5000
+      });
+    }else if(type==='danger'){
+      this.toastr.error(message,'Danger!',{
+        timeOut:5000
+      });
     }
+  }
+
+  deleteCustomer(id: any) {
+  this.customerService.deleteCustomer(id).subscribe(response=>{
+    if (response.code==204){
+      this.viewAlert('danger','Deleted!');
+    }
+  })
   }
 }
