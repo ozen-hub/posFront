@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CustomerService} from "./service/customer.service";
 import {CustomerDto} from "./dto/CustomerDto";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,8 @@ export class AppComponent {
     salary: new FormControl(null, Validators.required)
   });
   customerList:CustomerDto[]=[];
-  constructor(private customerService: CustomerService) {
+  constructor(private customerService: CustomerService,
+              private toastr:ToastrService) {
     this.loadCustomers();
   }
 
@@ -43,11 +45,15 @@ export class AppComponent {
     );
     this.customerService.saveCustomer(dto)
       .subscribe(response=>{
-        console.log(response)
+        this.viewAlert('success','Customer Saved!');
         this.loadCustomers();
       }, error => {
         console.log(error);
       });
-
+  }
+  viewAlert(type:string,message:string){
+    if (type==='success'){
+      this.toastr.success(message);
+    }
   }
 }
