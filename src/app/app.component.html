@@ -55,6 +55,13 @@
               &nbsp; | &nbsp;
               <button
                 mat-raised-button
+                color="warn"
+                [disabled]="customerForm.invalid"
+                (click)="updateCustomer()"
+              >Update Customer
+              </button> &nbsp; | &nbsp;
+              <button
+                mat-raised-button
                 color="primary"
                 [disabled]="customerForm.invalid"
                 (click)="saveCustomer()"

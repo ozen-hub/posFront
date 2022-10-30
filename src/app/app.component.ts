@@ -88,4 +88,22 @@ export class AppComponent {
       }
     })
   }
+
+
+  updateCustomer(){
+    let dto= new CustomerDto(
+      this.customerForm.get('id')?.value,
+      this.customerForm.get('name')?.value,
+      this.customerForm.get('address')?.value,
+      this.customerForm.get('salary')?.value
+    );
+    this.customerService.updateCustomer(dto)
+      .subscribe(response=>{
+        this.viewAlert('success','Customer Updated!');
+        this.loadCustomers();
+      }, error => {
+        console.log(error);
+      });
+  }
+
 }
