@@ -27,5 +27,9 @@ export class CustomerService {
       'http://localhost:8080/api/v1/customer?id='+id);
   }
 
+  getCustomer(id:any):Observable<any>{
+    return  this.http.get<CustomerDto>(
+      'http://localhost:8080/api/v1/customer/'+id);
+  }
 
 }

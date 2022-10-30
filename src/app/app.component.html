@@ -47,6 +47,14 @@
             <p style="text-align: right">
               <button
                 mat-raised-button
+                color="accent"
+                [disabled]="customerForm?.get('id')?.invalid"
+                (click)="getCustomer()"
+              >Get Customer
+              </button>
+              &nbsp; | &nbsp;
+              <button
+                mat-raised-button
                 color="primary"
                 [disabled]="customerForm.invalid"
                 (click)="saveCustomer()"

@@ -64,10 +64,28 @@ export class AppComponent {
   }
 
   deleteCustomer(id: any) {
-  this.customerService.deleteCustomer(id).subscribe(response=>{
-    if (response.code==204){
-      this.viewAlert('danger','Deleted!');
+    if (confirm('Are you sure?')){
+      this.customerService.deleteCustomer(id).subscribe(response=>{
+        if (response.code==204){
+          this.loadCustomers();
+          this.viewAlert('danger','Deleted!');
+        }
+      })
     }
-  })
+
+  }
+
+  getCustomer() {
+    this.customerService.getCustomer(
+      this.customerForm.get('id')?.value
+    ).subscribe(response=>{
+      if (response.code===200){
+        this.customerForm.patchValue({
+          name:response.data.name,
+          address:response.data.address,
+          salary:response.data.salary,
+        })
+      }
+    })
   }
 }
