@@ -20,7 +20,7 @@ export class CustomerService {
       })
   }
   loadAll():Observable<any>{
-    return  this.http.get<any>('http://localhost:8080/api/v1/customer/list');
+    return  this.http.get<any>('http://localhost:8080/api/v1/customer/all');
   }
 
 

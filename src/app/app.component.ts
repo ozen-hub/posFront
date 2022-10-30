@@ -44,6 +44,7 @@ export class AppComponent {
     this.customerService.saveCustomer(dto)
       .subscribe(response=>{
         console.log(response)
+        this.loadCustomers();
       }, error => {
         console.log(error);
       });
