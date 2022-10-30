@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {CustomerService} from "./service/customer.service";
+import {CustomerDto} from "./dto/CustomerDto";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +22,22 @@ export class AppComponent {
     salary: new FormControl(null, Validators.required)
   });
 
+  constructor(private customerService: CustomerService) {
+  }
+
   saveCustomer(){
-    console.log(this.customerForm);
+    let dto= new CustomerDto(
+      this.customerForm.get('id')?.value,
+      this.customerForm.get('name')?.value,
+      this.customerForm.get('address')?.value,
+      this.customerForm.get('salary')?.value
+    );
+    this.customerService.saveCustomer(dto)
+      .subscribe(response=>{
+        console.log(response)
+      }, error => {
+        console.log(error);
+      });
+
   }
 }
